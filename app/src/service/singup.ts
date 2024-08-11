@@ -1,4 +1,3 @@
-import { redirect } from "react-router-dom";
 import { api } from "./axios"
 
 export const singup = async (name: string, email: string, password: string) => {
@@ -8,8 +7,9 @@ export const singup = async (name: string, email: string, password: string) => {
             email,
             password,
         });
-        redirect('/users/login')
+        return true;
     } catch (e) {
         console.log(e)
-    };
+        return false;
+    }
 };

@@ -1,5 +1,5 @@
 import { api } from "./axios"
-const token = localStorage.getItem('token_key')
+const token = localStorage.getItem('token_key')?.valueOf()
 
 export const createStudent = async (name: string, phone: string) => {
     try {
@@ -8,14 +8,15 @@ export const createStudent = async (name: string, phone: string) => {
             phone
         }, {
             headers: {
-                "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`
             }
         });
+        return true;
     } catch (e) {
         console.log(e)
-    };
-}
+        return false;
+    }
+};
 
 export const listStudents = async () => {
     try {
@@ -23,5 +24,5 @@ export const listStudents = async () => {
         return response;
     } catch (e) {
         console.log(e)
-    };
+    }
 };

@@ -1,13 +1,17 @@
 import { useState } from "react";
 import { login } from "../service/login";
 import { Input } from "../component/input";
+import { useNavigate } from "react-router-dom";
 
 export function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const navigate = useNavigate();
   const handleSubmit = async () => {
-    await login(email, password);
+    const logged = await login(email, password);
+    if(logged){
+      return navigate('/home');
+    }
   };
 
   const inputs = [
@@ -47,27 +51,17 @@ export function LoginPage() {
           </div>
 
           <div className="mt-10 py-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            {inputs.map((input, index) => (
-              <Input key={index} {...input} />
-            ))}
-            <button
-              onClick={handleSubmit}
-              type="submit"
-              className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 mt-5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            >
-              Sign in
-            </button>
+              {inputs.map((input, index) => (
+                <Input key={index} {...input} />
+              ))}
+              <button
+                onClick={handleSubmit}
+                type="submit"
+                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-3.5 mt-5 text-xl font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                Sign in
+              </button>
           </div>
-
-          <p className="mt-10 text-center text-sm text-gray-500">
-            Not a member?{" "}
-            <a
-              href="#"
-              className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
-            >
-              Start a 14 day free trial
-            </a>
-          </p>
         </div>
       </div>
     </>

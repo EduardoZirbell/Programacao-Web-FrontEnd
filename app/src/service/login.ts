@@ -6,8 +6,10 @@ export const login = async (email: string, password: string) => {
             email,
             password,
         });
-        localStorage.setItem('token_key', response.data.token)
+        localStorage.setItem('token_key', response.data.acessToken)
+        return true;
     } catch (e) {
         console.log(e)
-    };
+        return false;
+    }
 };

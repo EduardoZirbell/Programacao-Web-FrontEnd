@@ -4,10 +4,12 @@ import { SingUpPage } from "./pages/singnup";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: <LoginPage />,
+
   },
   {
     path: "/singup",
@@ -20,7 +22,9 @@ const router = createBrowserRouter([
 ]);
 
 export function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <RouterProvider router={router} />
+  )
 }
 
 export default App;

@@ -15,6 +15,10 @@ export function SingUpPage() {
         }
     };
 
+    const haveUser = async () => {
+        return navigate('/')
+    }
+
     const inputs = [
         {
             type: "text",
@@ -49,13 +53,8 @@ export function SingUpPage() {
             <div className="h-svh flex items-center justify-center">
                 <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-20 lg:px-8">
                     <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-                        <img
-                            alt="Your Company"
-                            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                            className="mx-auto h-10 w-auto"
-                        />
                         <h2 className="mt-10 text-center text-3xl font-bold leading-9 tracking-tight text-gray-900">
-                            Sign in to your account
+                            Sign up your account
                         </h2>
                     </div>
 
@@ -71,6 +70,12 @@ export function SingUpPage() {
                             Sign in
                         </button>
                     </div>
+                    <p className="mt-10 text-center text-sm text-gray-500">
+                        Does have a user?{' '}
+                        <a onClick={haveUser} href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+                            SingIn
+                        </a>
+                    </p>
                 </div>
             </div>
         </>

@@ -1,3 +1,4 @@
+import { toast } from "sonner";
 import { api } from "./axios"
 
 export const singup = async (name: string, email: string, password: string) => {
@@ -7,9 +8,16 @@ export const singup = async (name: string, email: string, password: string) => {
             email,
             password,
         });
+        toast.success('User created with success.')
         return true;
     } catch (e) {
-        console.log(e)
+        if (name == '') {
+            toast.error("Name it's necessary.")
+        } if (email == '') {
+            toast.error("Email it's necessary.")
+        } if (password == '') {
+            toast.error("Password it's necessary.")
+        }
         return false;
     }
 };

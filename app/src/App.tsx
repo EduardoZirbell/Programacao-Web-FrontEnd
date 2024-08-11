@@ -1,15 +1,13 @@
 import { LoginPage } from "./pages/login";
 import { HomePage } from "./pages/home";
 import { SingUpPage } from "./pages/singnup";
-
+import Toaster from './component/Toaster';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <LoginPage />,
-
   },
   {
     path: "/singup",
@@ -17,13 +15,16 @@ const router = createBrowserRouter([
   },
   {
     path: "/home",
-    element: <HomePage />,
-  },
+    element: <HomePage />
+  }
 ]);
 
 export function App() {
   return (
-    <RouterProvider router={router} />
+    <>
+      <RouterProvider router={router} />
+      <Toaster />
+    </>
   )
 }
 

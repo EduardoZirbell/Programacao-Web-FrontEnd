@@ -1,3 +1,4 @@
+import { toast } from "sonner";
 import { api } from "./axios"
 const token = localStorage.getItem('token_key')?.valueOf()
 
@@ -11,9 +12,15 @@ export const createStudent = async (name: string, phone: string) => {
                 Authorization: `Bearer ${token}`
             }
         });
+        toast.success('Student created.')
         return true;
     } catch (e) {
-        console.log(e)
+        if (name == '') {
+            toast.error("Name it's necessary")
+        } else {
+            toast.error("Phone it's necessary.")
+        }
+
         return false;
     }
 };
